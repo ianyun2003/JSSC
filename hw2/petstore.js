@@ -1,4 +1,3 @@
-
 /**
  * This function should calculate the total amount of pet food that should be
  * ordered for the upcoming week.
@@ -9,7 +8,11 @@
  * 				 week, or -1 if the numAnimals or avgFood are less than 0 or non-numeric
  */
 function calculateFoodOrder(numAnimals, avgFood) {
-    // IMPLEMENT THIS FUNCTION!
+    if (numAnimals < 0 || avgFood < 0 || typeof(numAnimals) !== "number" || typeof(avgFood) !== "number") {
+        return -1
+    } else {
+        return avgFood * numAnimals
+    }
 }
 
 /**
@@ -51,7 +54,7 @@ function createAnimalObjects(names, types, breeds) {
 /**
  * A prototype to create Weekday objects
  */
-function Weekday (name, traffic) {
+function Weekday(name, traffic) {
     this.name = name;
     this.traffic = traffic;
 }
@@ -59,19 +62,19 @@ function Weekday (name, traffic) {
 /**
  * A prototype to create Item objects
  */
-function Item (name, barcode, sellingPrice, buyingPrice) {
-     this.name = name;
-     this.barcode = barcode;
-     this.sellingPrice = sellingPrice;
-     this.buyingPrice = buyingPrice;
-}
- /**
-  * A prototype to create Animal objects
-  */
-function Animal (name, type, breed) {
+function Item(name, barcode, sellingPrice, buyingPrice) {
     this.name = name;
-     this.type = type;
-     this.breed = breed;
+    this.barcode = barcode;
+    this.sellingPrice = sellingPrice;
+    this.buyingPrice = buyingPrice;
+}
+/**
+ * A prototype to create Animal objects
+ */
+function Animal(name, type, breed) {
+    this.name = name;
+    this.type = type;
+    this.breed = breed;
 }
 
 
@@ -82,4 +85,3 @@ function Animal (name, type, breed) {
 function helloworld() {
     return 'hello world!';
 }
-
