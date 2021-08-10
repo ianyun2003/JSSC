@@ -8,7 +8,7 @@
  * 				 week, or -1 if the numAnimals or avgFood are less than 0 or non-numeric
  */
 function calculateFoodOrder(numAnimals, avgFood) {
-    if (numAnimals < 0 || avgFood < 0 || typeof(numAnimals) !== "number" || typeof(avgFood) !== "number") {
+    if (numAnimals < 0 || avgFood < 0 || typeof (numAnimals) !== "number" || typeof (avgFood) !== "number") {
         return -1
     } else {
         return avgFood * numAnimals
@@ -24,8 +24,51 @@ function calculateFoodOrder(numAnimals, avgFood) {
  * @param week an array of Weekday objects
  * @return a string containing the name of the most popular day of the week if there is only one most popular day, and an array of the strings containing the names of the most popular days if there are more than one that are most popular
  */
+// var w = [{ name: 'Monday', traffic: 10 },
+// { name: 'Tuesday', traffic: 4000 },
+// { name: 'Wednesday', traffic: 4000 },
+// { name: 'Thurs', traffic: 390 },
+// { name: 'Fri', traffic: 390 },
+// { name: 'Sat', traffic: 4000 }]
+// console.log(mostPopularDays(w))
+
 function mostPopularDays(week) {
     // IMPLEMENT THIS FUNCTION!
+    if (week == null || week.length == 0) {
+        return null;
+    } else {
+        //bubble sort
+        for (var j = 0; j < week.length; j++) {
+            for (var i = 0; i < week.length - 1; i++) {
+                if (week[i].traffic < week[i + 1].traffic) {
+                    var temp = week[i]
+                    week[i] = week[i + 1]
+                    week[i + 1] = temp
+                }
+            }
+        }
+        //handle tie
+        var tie = []
+        var count = 1
+        for (var x = 0; x < week.length - 1; x++) {
+            if (week[0].traffic == week[x + 1].traffic) {
+                count += 1
+            }
+        }
+
+        //handle for output return
+        if (count == 1) {
+            return week[0].name
+        } else {
+            for (var z = 0; z < count; z++) {
+                tie.push(week[z].name)
+            }
+            return tie
+        }
+
+    }
+
+
 }
 
 
