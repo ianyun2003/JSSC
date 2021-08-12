@@ -85,6 +85,7 @@ function mostPopularDays(week) {
  */
 function createAnimalObjects(names, types, breeds) {
     // IMPLEMENT THIS FUNCTION!
+
 }
 
 /////////////////////////////////////////////////////////////////
