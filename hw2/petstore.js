@@ -1,3 +1,6 @@
+
+// DUE 8/24
+
 /**
  * This function should calculate the total amount of pet food that should be
  * ordered for the upcoming week.
@@ -65,10 +68,7 @@ function mostPopularDays(week) {
             }
             return tie
         }
-
     }
-
-
 }
 
 
@@ -81,10 +81,36 @@ function mostPopularDays(week) {
  * @param types the array of animal types (ex. "Dog", "Cat", "Bird")
  * @param breeds the array of animal breeds
  * @return an array of Animal objects containing the animals' information, or an
- *         empty array if the array's lengths are unequal or zero, or if any array is null.
+ *         empty array if the array's lengths are unequal or zero,        or if any array is null.
  */
+
+// var test = createAnimalObjects(['a', 'b'], ['c', 'd'], ['e', 'f'])
+// console.log(test)
+
+
 function createAnimalObjects(names, types, breeds) {
-    // IMPLEMENT THIS FUNCTION!
+    // IMPLEMENT THIS FUNCTION! 
+
+    if (names == null || types == null || breeds == null) {
+        return []
+    } else if (names.length == 0 || types.length == 0 || breeds.length == 0) {
+        return []
+    } else if ((names.length != types.length || names.length != breeds.length || types.length != breeds.length)) {
+        return []
+    } else {
+
+        var count = names.length
+
+        var animals = []
+        for (var x = 0; x < count; x++) {
+            var animal = Animal(names[x], types[x], breeds[x])
+            animals.push(animal)
+            // console.log(names[x], types[x], breeds[x])
+        }
+
+        return animals
+    }
+
 
 }
 
