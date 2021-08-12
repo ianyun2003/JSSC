@@ -26,3 +26,70 @@ h1 {
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px #000;
     vertical-align: top;
 }
+
+.weekday-heather {
+    background-color: #999;
+    border-color: #ddd;
+    border-style: solid;
+    letter-spacing: 1px;
+    line-height: 25px
+}
+
+.week {
+    background-color: #eaeaea;
+    height: 75px;
+    margin: 0;
+    text-align: left;
+    vertical-align: top
+}
+
+.off-day {
+    background-color: #ddd
+}
+
+ul {
+    font-size: 75%;
+    list-style: none;
+    padding-left: 20px;
+    padding-right: 5px
+}
+
+.event-dog-walk {
+    border-radius: 5px;
+    color: #10171C;
+    padding: 5px;
+    margin: 5px 0;
+    background-color: #A6F4FF
+}
+
+.event_school {
+    border-radius: 5px;
+    color: #10171C;
+    padding: 5px;
+    margin: 5px 0;
+    background-color: #BA9CE8;
+}
+
+.event-appointment {
+    border-radius: 5px;
+    color: #10171C;
+    padding: 5px;
+    margin: 5px 0;
+    background-color: #FF7E6D
+}
+
+.event-birthday {
+    border-radius: 5px;
+    color: #10171C;
+    padding: 5px;
+    margin: 5px 0;
+    background-color: #AFFFAD
+}
+
+.event_holiday {
+    border-radius: 5px;
+    color: #10171C;
+    padding: 5px;
+    margin: 5px 0;
+    background-color: #E8E193
+}
