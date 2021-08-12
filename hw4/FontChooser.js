@@ -13,7 +13,7 @@ class FontChooser extends React.Component {
 				<button id="decreaseButton" hidden='true'>-</button>
 				<span id="fontSizeSpan" hidden='true'>{this.props.size}</span>
 				<button id="increaseButton" hidden='true'>+</button>
-				<span id="textSpan" style={this.props.bold}>{this.props.text}</span>
+				<span id="textSpan">{this.props.text}</span>
 			</div>
 		);
 	}
