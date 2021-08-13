@@ -16,14 +16,16 @@ function evaluate(stack) {
     return functionMap[stack[1]](stack[0], stack[2]);
 };
 
-var stack = [];
+var stack = []; // data structure 
+
+
 var display = '';
 var current;
 
 
 $(function () {
     $(".digit").click(function () {
-        if (stack.length == 1 || stack.length == 3) { // new operation 
+        if (stack.length == 1 || stack.length == 3) {
             display = '';
             stack = [];
         }
