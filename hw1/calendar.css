@@ -27,7 +27,7 @@ h1 {
     vertical-align: top;
 }
 
-.weekday-heather {
+.weekday-header {
     background-color: #999;
     border-color: #ddd;
     border-style: solid;
@@ -54,7 +54,7 @@ ul {
     padding-right: 5px
 }
 
-.event-dog-walk {
+.dog-walk {
     border-radius: 5px;
     color: #10171C;
     padding: 5px;
@@ -62,7 +62,7 @@ ul {
     background-color: #A6F4FF
 }
 
-.event_school {
+.school {
     border-radius: 5px;
     color: #10171C;
     padding: 5px;
@@ -70,7 +70,7 @@ ul {
     background-color: #BA9CE8;
 }
 
-.event-appointment {
+.appointment {
     border-radius: 5px;
     color: #10171C;
     padding: 5px;
@@ -78,7 +78,7 @@ ul {
     background-color: #FF7E6D
 }
 
-.event-birthday {
+.birthday {
     border-radius: 5px;
     color: #10171C;
     padding: 5px;
@@ -86,10 +86,19 @@ ul {
     background-color: #AFFFAD
 }
 
-.event_holiday {
+.holiday {
     border-radius: 5px;
     color: #10171C;
     padding: 5px;
     margin: 5px 0;
     background-color: #E8E193
+}
+
+.copyright-notice {
+    color: #FFF;
+    font-size: 50%;
+    padding-right: 50px;
+    text-align: right;
+    text-decoration: none;
+    vertical-align: bottom;
 }
