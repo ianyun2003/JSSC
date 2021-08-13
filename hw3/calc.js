@@ -2,119 +2,87 @@
  * Implement all your JavaScript in this file!
  */
 
-var result = null;
-var prevInput = null;
-var operation = null;
-var currInput = null;
+// map operator buttons id with their function
+var functionMap = {
+    "addButton": (a, b) => a + b,
+    "subtractButton": (a, b) => a - b,
+    "multiplyButton": (a, b) => a * b,
+    "divideButton": (a, b) => a / b
+};
 
-$("#clearButton").click(function () {
-    $("#display").val("");
-    result = null;
-    prevInput = null;
-    operation = null;
-    currInput = null;
-});
+// give an array, values at index 0 and 2, operator at index 1
+// calculate the operation
+function evaluate(stack) {
+    return functionMap[stack[1]](stack[0], stack[2]);
+};
 
-
-$("#button0").click(function () {
-
-    if (operation) {
-        $("#display").val("0");
-    } else {
-        $("#display").val($("#display").val() + "0");
-        currInput = currInput + "0"
-    }
-});
+var stack = [];
+var display = '';
+var current;
 
 
-$("#button1").click(function () {
-    $("#display").val($("#display").val() + "1");
-    currInput = currInput + "1"
-
-});
-
-$("#button2").click(function () {
-    $("#display").val($("#display").val() + "2");
-    currInput = currInput + "2"
-
-});
-
-$("#button3").click(function () {
-    $("#display").val($("#display").val() + "3");
-    currInput = currInput + "3"
-});
-
-$("#button4").click(function () {
-    $("#display").val($("#display").val() + "4");
-    currInput = currInput + "4"
-});
-
-$("#button5").click(function () {
-    $("#display").val($("#display").val() + "5");
-    currInput = currInput + "5"
-});
-
-$("#button6").click(function () {
-    $("#display").val($("#display").val() + "6");
-    currInput = currInput + "6"
-});
-
-$("#button7").click(function () {
-    $("#display").val($("#display").val() + "7");
-    currInput = currInput + "7"
-
-});
-
-$("#button8").click(function () {
-    $("#display").val($("#display").val() + "8");
-    currInput = currInput + "8"
-
-});
-
-$("#button9").click(function () {
-    $("#display").val($("#display").val() + "9");
-    currInput = currInput + "9"
-
-});
-
-
-$("#addButton").click(function () {
-
-    if (prevInput == null) {
-        prevInput = currInput
-        operation = "+"
-    } else {
-        prevInput = parseInt(currInput) + parseInt(prevInput)
-        result = prevInput
-        operation = "+"
-        $("#display").val(result);
-    }
-
-});
-
-
-$("#equalsButton").click(function () {
-
-    // 1. userNumbers[0] + display 
-    // 2. userNumbers = []
-
-    if (prevInput !== null && currInput !== null) {
-        if (operation == "+") {
-            prevInput = currInput + prevInput
+$(function () {
+    $(".digit").click(function () {
+        if (stack.length == 1 || stack.length == 3) { // new operation 
+            display = '';
+            stack = [];
         }
-        if (operation == "-") {
-            prevInput = currInput - prevInput
-        }
-        if (operation == "*") {
-            prevInput = currInput * prevInput
-        }
-        if (operation == "/") {
-            prevInput = currInput / prevInput
-        }
-        result = prevInput
-        $("#display").val(result);
-    }
 
+        display += $(this).val();
+        $("#display").val(Number(display));
+        current = Number(display);
+    });
+
+    $("#clearButton").click(function () { // restore to initial state
+        display = '';
+        stack = [];
+        current = NaN;
+        $("#display").val(display);
+    });
+
+    $(".operator").click(function () {
+        if (stack.length == 3) { // just perform an operation and continue another
+            stack = [];
+            stack.push(Number(display));
+            stack.push(this.id);
+        } else if (stack.length == 2) { // in middle of operation
+            if (isNaN(current)) { // operator after operator 
+                stack[1] = this.id; // replace with the recent
+            } else { // user have inputed the right hand side of the operation
+                stack.push(Number(display));
+                display = evaluate(stack);
+                $("#display").val(display);
+                stack = [display, this.id]; // ready for the next operation
+            }
+        } else if (stack.length == 1) { // user have inputed the left hand side of the operation and pressed the equals button
+            stack.push(this.id);
+        } else { // user have inputed the left hand side
+            stack.push(Number(display));
+            stack.push(this.id);
+            display = '';
+        }
+        current = NaN;
+        // console.log(stack);
+        display = '';
+    });
+
+    $("#equalsButton").click(function () {
+        // console.log(stack); 		
+        if (stack.length == 0) { // reset state
+            if (current) { // user have inputed some numbers
+                stack = [current];
+            }
+        } else if (stack.length == 2) {
+            if (!isNaN(current)) { // basic use case
+                stack.push(Number(display));
+                console.log(stack);
+                display = evaluate(stack);
+                $("#display").val(display);
+            } // else ignore		
+        } else if (stack.length == 3) { // the previous operation should be repeated using the result of the operation and the most recently entered operand
+            stack[0] = display;
+            display = evaluate(stack);
+            $("#display").val(display);
+        }
+    });
 });
-
-
