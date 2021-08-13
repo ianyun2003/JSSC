@@ -102,3 +102,11 @@ ul {
     text-decoration: none;
     vertical-align: bottom;
 }
+
+.event {
+    border-radius: 5px;
+    color: #10171C;
+    padding: 5px;
+    margin: 5px 0;
+    background-color: #A6F4FF
+}
